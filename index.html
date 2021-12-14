@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="uft-8">
+    <title>★ habit tracker ★</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 align="left" float="left">Habit Tracker</h1>
+      <h2 id="monthYearTitle" align="right" float="right"></h2> 
+    </header>
+
+  <!-- <center> -->
+    <main class="main">
+      <table id="tracker">
+        <thead>
+          <tr id="firstLine">
+            <th align="left" class="habitTitle"><h3>Hábitos</h3></th>
+          </tr>
+        </thead>
+        <tbody id="habit"></tbody>
+      </table>
+    </main>
+  <!-- </center> -->
+
+  <footer class="footer">
+    <input type="text" id="addHabitInput" placeholder="título do hábito" class="addHabbitInput" size="40" value="">
+    <button id="addHabitBtn" onclick="addHabit()" class="addHabitBtn">+</button>
+  </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
