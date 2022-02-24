@@ -1,35 +1,57 @@
 <!DOCTYPE html>
+
   <head>
     <meta charset="uft-8">
-    <title>★ habit tracker ★</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>★ trackers ★</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
+
   <body>
     <header class="header">
-      <h1 align="left" float="left">Habit Tracker</h1>
-      <h2 id="monthYearTitle" align="right" float="right"></h2> 
+      <h1>Rastreadores</h1>
     </header>
-
-  <!-- <center> -->
-    <main class="main">
-      <table id="tracker">
-        <thead>
-          <tr id="firstLine">
-            <th align="left" class="habitTitle"><h3>Hábitos</h3></th>
-          </tr>
-        </thead>
-        <tbody id="habit"></tbody>
-      </table>
+    <main class="main startMain">
+      <div class="startCard">
+        <img src="images/1.jpg" />
+        <article class="startContainer">
+          <h2>Hábitos</h2>
+          <p>Para colocar tarefas a serem concluídas diariamente no mês e marcá-las. Há preservação de dados a partir do <em>local storage</em>. Transição entre meses incerta.</p>
+          <a href="/habits/habits.html"><button>Abrir</button></a>
+        </article>
+      </div>
+      
+      <div class="startCard">
+        <img src="images/2.jpg" />
+        <article class="startContainer">
+          <h2>Pomodoro</h2>
+          <p>Para usar a técnica do <a href="https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro">pomodoro</a> com o tempo que desejar, armazenando os tempos do dia e podendo separá-los por tarefa. <br>Em desenvolvimento. </p>
+          <a href="/pomodoro/pomodoro.html"><button>Abrir</button></a>
+        </article>
+      </div>
+      
+      <div class="startCard">
+        <img src="images/3.jpg" />
+        <article class="startContainer">
+          <h2>Visão Anual</h2>
+          <p>Para planejar o ano, sendo possível fazer anotações mensais e/ou diárias, possibilitando organização de aniversários e feriados. <br>Em desenvolvimento. </p>
+          <a href="/yearplan/year-plan.html"><button>Abrir</button></a>
+        </article>
+      </div>
+      
+      <div class="startCard"> 
+        <img src="images/4.png" />
+        <article class="startContainer">
+          <h2>Agenda</h2>
+          <p>Agenda anual. Possibilitará o armazenamento de até quatro comprimossos por dia do ano, podendo esses serem removidos.<br>Projeto futuro.</p>
+          <a><button disabled>Abrir</button></a>
+        </article>
+      </div>
     </main>
-  <!-- </center> -->
 
-  <footer class="footer">
-    <input type="text" id="addHabitInput" placeholder="título do hábito" class="addHabbitInput" size="40" value="">
-    <button id="addHabitBtn" onclick="addHabit()" class="addHabitBtn">+</button>
-  </footer>
-
-    <script src="script.js"></script>
+    <footer class="footer"></footer>
   </body>
-</html>
+
+  </html>

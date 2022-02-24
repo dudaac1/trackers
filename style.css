@@ -1,11 +1,27 @@
+:root {
+  --main-color: #20B2AA;
+  --main-color-dark: #165F5B;
+  --main-color-light: #ADDCDB;
+  --second-color: #FFBF46;
+  --third-color: #F4442E;
+  --white: #F3F3F3;
+  --second-white: #E7E6E6;
+  --third-white: #CDCDCD;
+  --black: #0C0C0C;
+  --second-black: #373737;
+
+  --title-font: 'Rubik', sans-serif;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  background-color: var(--white);
+  font-family: var(--title-font);
+  color: var(--black);
 }
 
 .header {
- background-color: lightseagreen; 
+ background-color: var(--main-color); 
  padding: 15px;
  display: flex;
  justify-content: space-between;
@@ -15,21 +31,184 @@ body {
 .header h1, .header h2 {
   margin: 0;
   padding: 0;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.header h1 {
+  font-size: 36px;;
 }
 
 .main {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.main h2 {
+  margin: 0;
+  padding-top: 20px;
+  font-size: 30px;
+}
+
+a {
+  text-decoration: underline dotted var(--main-color) 1px;
+  color: var(--main-color);
+}
+
+a:hover {
+  color: var(--main-color-dark);
+}
+
+textarea, input, button {
+  font-family: var(--title-font);
+  color: var(--black);
+}
+
+.inputTextLine {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--main-color);
+  font-size: 16px;
+}
+
+input[type="number"] {
+  padding: 2.5px 0px 2px 7.5px;
+  border: none;
+  outline: none;
+  background-color: var(--second-white);
+  border-radius: 15px;
+}
+
+button {
+  background-color: var(--main-color);
+  border: none;
+  padding: 5px 10px;
+  color: var(--white);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: var(--main-color-dark);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:active {
+  color: var(--second-color);
+}
+
+button:disabled {
+  color: var(--main-color);
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+  cursor: default;
+}
+
+.footer {
+  bottom: 0;
+  position: fixed;
+  width: 95vw;
+  background-color: var(--main-color);
+  padding: 25px 2.5vw;
+  font-size: 18px;
+  color: var(--second-black);
+}
+
+.footer small {
+  font-size: 12px;
+}
+
+.footer a {
+  color: var(--main-color-light);
+}
+
+.footer input {
+  border-color: var(--main-color-dark);
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.table-row {
-  width: 27.5px;
+.hidden {
+  display: none;
+}
+
+/*****************      START PAGE        *****************/
+/*****************      START PAGE        *****************/
+/*****************      START PAGE        *****************/
+
+.startMain {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 25px 25px 50px 0px;
+}
+
+.startCard {
+  flex: 1 275px;
+  max-width: 400px;
+  height: auto;
+  margin: 10px;
+  background-color: var(--main-color-light);
+  align-items: stretch;
+  padding-bottom: 25px;
+}
+
+.startCard img {
+  width: 100%;
+  height: 40%;
+  object-fit: cover;
+}
+
+.startContainer {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  padding: 0% 5%;
+  font-size: 14px;
+  align-items: stretch;
+}
+
+.startContainer p {
+  flex-grow: 1;
+}
+
+.startContainer a {
+  align-self: center;
+}
+
+.startContainer button {
+  padding: 5px 20px;
+  font-family: var(--title-font);
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+
+/*****************      HABIT TRACKER        *****************/
+/*****************      HABIT TRACKER        *****************/
+/*****************      HABIT TRACKER        *****************/
+
+.tracker {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  min-width: 25px;
+  max-width: 27.5px;
   text-align: center;
 }
 
 .habitTitle {
   min-width: 150px;
+  max-width: 250px;
 }
 
 .habitCheckbox {
@@ -38,54 +217,130 @@ body {
 	border-radius: 3px;
 	display: inline-block;
   position: relative;
-  border: 1px solid lightseagreen;
+  border: 1px solid var(--main-color);
 }
 
 .habitCheckbox:checked {
-  background-color: lightseagreen;;
+  background-color: var(--main-color);
 }
 
 .habitCheckbox:checked:after {
-  content: '\2714';
-  font-size: 10px;
-  position: absolute;
-  color: whitesmoke;
   top: 1px;
   left: 4px;
-}
-
-.footer {
-  bottom: 0;
-  position: fixed;
-  width: 100vw;
-  background-color: rgb(162, 231, 228);
-  padding: 25px 50px;
-  font-size: 14pt;
+  position: absolute;
+  content: '\2714';
+  font-size: 10px;
+  color: var(--second-white);
 }
 
 .addHabitBtn {
-  border: none;
   background-color: transparent;
+  border: none;
   border-radius: 50%;
+  font-size: 18px;
   transition-duration: 0.2s;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14pt;
-  color: lightseagreen;
 }
 
 .addHabitBtn:hover {
   transition-duration: 0.2s;
-  color: whitesmoke;
 }
 
-.addHabitBtn:active {
-  color: skyblue;
+
+
+
+/*****************      POMO TRACKER         *****************/
+/*****************      POMO TRACKER         *****************/
+/*****************      POMO TRACKER         *****************/
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  height: 350px;
+  margin-top: 50px;
+  padding: 50px; 
+  background-color: var(--main-color-light);
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.addHabbitInput {
-  border: none;
-  outline: none;
-  border-bottom: 1px solid lightseagreen;
+.timer h1 {
+  font-size: 115px;
+  margin: 0;
+}
+
+.timer h2 {
+  font-size: 40px;
+  margin: 0;
+}
+
+
+.stats {
+  padding: 25px;
+  text-align: justify;
+}
+
+.statsBtn {
+  margin-left: 100px;
+}
+
+.timerInput {
+  width: 50px;
+}
+
+/*****************      YEAR PLANNER         *****************/
+/*****************      YEAR PLANNER         *****************/
+/*****************      YEAR PLANNER         *****************/
+
+.yearInMonths {
+  display: flex;
+  /* justify-content: center; */
+  justify-content: space-around;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+
+.yearInMonths article {
+  margin: 10px 5px 5px 5px;
+  width: 200px;
+}
+
+.yearInMonths h3 {
+  background: var(--main-color);
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  padding: 0px 3px;
+}
+
+.yearInMonths textarea { 
+  resize: none;
+}
+
+.monthBox {
+  border: 1px solid var(--main-color);
+  border-collapse: collapse;
   background-color: transparent;
-  font-size: 12pt;
+  outline: none;
+  width: 100%;
+}
+
+.normal {
+  height: 100px;
+}
+
+.bigger {
+  height: 175px;
+}
+
+.monthSection {
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.monthSection input {
+  margin: 2.5px 0px 0px 2.5px;
+  width: 175px;
 }
