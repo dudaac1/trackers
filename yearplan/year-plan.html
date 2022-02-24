@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="uft-8">
+    <title>★ year plan ★</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 align="left" float="left">Planejamento Anual</h1>
+      <h2 id="yearTitle" align="right" float="right"></h2> 
+    </header>
+    <main class="yearInMonths" id="yearInMonths">
+    </main>
+
+    <footer class="footer flex">
+      <div>
+        Selecione ano: <input type="number" style="width: 75px" id="year" value="2021">
+        <button onclick="saveYear()">salvar</button>
+      </div>
+      <button id="showMonths" onclick="hideMonths()">esconder dias</button>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
