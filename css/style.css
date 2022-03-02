@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;800&display=swap');
+
+:root {
+  --primary-color: #20B2AA;
+  --dark-color: #165F5B;
+  --light-color: #ADDCDB;
+  --white-color: #F3F3F3;
+  --second-white: #E7E6E6;
+  --black-color: #0C0C0C;
+  --second-black: #373737;
+  --secondary-color: #FFBF46;
+  --thirdy-color: #F4442E;
+
+  --title-font: 'Rubik', sans-serif;
+}
+
+/* HABIT TRACKER PAGE */
+.habit-box {
+  width: auto;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.habit-box .grid {
+  grid-template-columns: repeat(7, 1fr) ;
+}
+
+.habit-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  border-bottom: 1px solid var(--light-color);
+}
+
+.habit-head h3 {
+  font-weight: 300;
+  font-size: 1.25rem;
+  padding: 0px 0.25rem;
+}
+
+.habit-head button {
+  color: var(--primary-color);
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.habit-body p {
+  font-size: 12px;
+  text-align: center;
+  color: var(--second-black);
+}
+
+
+.habit-body input[type="checkbox"]:not(:checked),
+.habit-body input[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999%;
+}
+
+.habit-body input[type="checkbox"] + label {
+  display: inline-block;
+  margin: 0.1rem;
+  padding: 0.3rem;
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  color: black;
+}
+
+.habit-body input[type="checkbox"]:checked + label {
+  color: var(--primary-color);
+  background-color: var(--primary-color);
+  content: '\2713';
+}

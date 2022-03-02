@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;800&display=swap');
+
 :root {
   --main-color: #20B2AA;
   --main-color-dark: #165F5B;
@@ -13,8 +15,13 @@
   --title-font: 'Rubik', sans-serif;
 }
 
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   background-color: var(--white);
   font-family: var(--title-font);
   color: var(--black);
@@ -29,8 +36,6 @@ body {
 }
 
 .header h1, .header h2 {
-  margin: 0;
-  padding: 0;
   font-weight: 800;
   color: var(--white);
 }
@@ -46,10 +51,10 @@ body {
 }
 
 .main h2 {
-  margin: 0;
   padding-top: 20px;
   font-size: 30px;
 }
+
 
 a {
   text-decoration: underline dotted var(--main-color) 1px;
@@ -136,7 +141,9 @@ button:disabled {
 }
 
 .hidden {
-  display: none;
+  /* display: none; */
+  visibility: hidden;
+  height: 0;
 }
 
 /*****************      START PAGE        *****************/
@@ -192,63 +199,6 @@ button:disabled {
 }
 
 
-/*****************      HABIT TRACKER        *****************/
-/*****************      HABIT TRACKER        *****************/
-/*****************      HABIT TRACKER        *****************/
-
-.tracker {
-  display: flex;
-  flex-direction: column;
-}
-
-.tableRow {
-  min-width: 25px;
-  max-width: 27.5px;
-  text-align: center;
-}
-
-.habitTitle {
-  min-width: 150px;
-  max-width: 250px;
-}
-
-.habitCheckbox {
-  appearance: none;
-  padding: 8px;
-	border-radius: 3px;
-	display: inline-block;
-  position: relative;
-  border: 1px solid var(--main-color);
-}
-
-.habitCheckbox:checked {
-  background-color: var(--main-color);
-}
-
-.habitCheckbox:checked:after {
-  top: 1px;
-  left: 4px;
-  position: absolute;
-  content: '\2714';
-  font-size: 10px;
-  color: var(--second-white);
-}
-
-.addHabitBtn {
-  background-color: transparent;
-  border: none;
-  border-radius: 50%;
-  font-size: 18px;
-  transition-duration: 0.2s;
-}
-
-.addHabitBtn:hover {
-  transition-duration: 0.2s;
-}
-
-
-
-
 /*****************      POMO TRACKER         *****************/
 /*****************      POMO TRACKER         *****************/
 /*****************      POMO TRACKER         *****************/
@@ -267,14 +217,13 @@ button:disabled {
 
 .timer h1 {
   font-size: 115px;
-  margin: 0;
+  ;
 }
 
 .timer h2 {
   font-size: 40px;
-  margin: 0;
+  ;
 }
-
 
 .stats {
   padding: 25px;
@@ -296,7 +245,6 @@ button:disabled {
 .yearInMonths {
   display: flex;
   justify-content: space-around;
-
   flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 100px;
@@ -304,12 +252,12 @@ button:disabled {
 
 .yearInMonths article {
   margin: 10px 5px 5px 5px;
-  width: 200px;
+  width: 140px;
 }
 
 .yearInMonths h3 {
   background: var(--main-color);
-  margin: 0;
+  ;
   text-align: center;
   width: 100%;
   padding: 0px 3px;
@@ -342,5 +290,81 @@ button:disabled {
 
 .monthSection input {
   margin: 2.5px 0px 0px 2.5px;
-  width: 175px;
+  width: 115px;
+}
+
+@media (min-width: 1366px) {
+  .yearInMonths article {
+    width: 190px;
+  }
+
+  .monthSection input {
+    width: 165px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1366px){
+  .yearInMonths article {
+    width: 260px;
+  }
+
+  .monthSection {
+    font-size: 16px;
+  }
+
+  .monthSection input {
+    width: 230px;
+    padding: 5px 0;
+    margin: 5px 0;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .yearInMonths article {
+    width: 100vw;
+    font-size: 36px;
+  }
+
+  .monthBox {
+    height: 250px;
+  }
+  
+  .monthSection {
+    font-size: 36px;
+  }
+
+  .monthSection input {
+    width: 90vw;
+    padding: 1rem;
+  }
+}
+
+
+/* responsivity */
+
+@media (max-width: 768px) {
+  .timer, .main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .stats {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .timer, .main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .stats {
+    justify-content: center;
+    align-items: center;
+  }
 }

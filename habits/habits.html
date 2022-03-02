@@ -2,39 +2,29 @@
   <head>
     <meta charset="uft-8">
     <title>★ habit tracker ★</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
+
   <body>
-    <header class="header">
-      <h1 align="left" float="left">Rastreador de Hábitos</h1>
-      <h2 id="monthYearTitle" align="right" float="right"></h2> 
+    <header>
+      <div class="container flex">
+        <h1>Rastreador de Hábitos</h1>
+        <h2 id="monthTitle"></h2> 
+      </div>
     </header>
 
-    <main class="main">
-      <div class="tracker">
-        <table id="tracker">
-          <thead>
-            <tr id="firstLine">
-              <th align="left" class="habitTitle"><h3>Hábitos</h3></th>
-            </tr>
-          </thead>
-          <tbody id="habit"></tbody>
-        </table>
-      </div>
+    <main>
+      <div class="div container flex wrap" id="habits"></div>
     </main>
 
-
-    <!-- https://stackoverflow.com/questions/44299150/set-text-inside-a-check-box/44299305#:~:text=2%20Answers&text=You%20can%20hide%20the%20input,be%20applied%20to%20radio%20buttons. -->
-
   <footer class="footer">
-    <input type="text" id="addHabitInput" placeholder="título do hábito" class="inputTextLine" size="40" value="">
+    <input type="text" id="addHabitInput" placeholder="título do hábito" size="40" value="">
     <button id="addHabitBtn" onclick="addHabit()" class="addHabitBtn">+</button>
     <br><small>(Não é aceito títulos vazios ou repetidos.)</small>
   </footer>
 
     <script src="script.js"></script>
   </body>
+
 </html>

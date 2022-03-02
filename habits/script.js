@@ -1,116 +1,139 @@
-var monthYearTitle = document.getElementById("monthYearTitle");
-var trackerTable = document.getElementById("tracker");
-var firstLineTable = document.getElementById("firstLine");
-var habitBody = document.getElementById("habit");
-var addHabitInput = document.getElementById("addHabitInput");
-
-var currentMonth = new Date().getMonth();
-var currentYear = new Date().getFullYear();
-
 var monthArray = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+var smallWeekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+
+var currentYear = new Date().getFullYear();
+console.log(currentYear);
+var currentMonth = new Date().getMonth();
+console.log(currentMonth);
+var daysInMonth = new Date(currentYear, (currentMonth+1), 0).getDate();
+console.log(daysInMonth);
+var firstDayOfMonth, numberOfWeeks;
+Date.prototype.getWeekOfMonth = function () {
+  firstDayOfMonth = new Date(this.setDate(1)).getDay(); 
+  return Math.ceil((firstDayOfMonth + daysInMonth) / 7); // numero de semanas do mês
+}
+
+var habitsContainer, addHabitInput, monthTitle;
 var habits = [];
 
-var lastHabitIndex = 0;
-var daysInMonth = new Date(currentYear, (currentMonth+1), 0).getDate()
-
 function start() {
+  habitsContainer = document.getElementById("habits");
+  addHabitInput = document.getElementById("addHabitInput");
+  monthTitle = document.getElementById("monthTitle");
+
+  monthTitle.textContent = monthArray[currentMonth] + "/" + currentYear;
+
   addHabitInput.focus();
-  addHabitInput.addEventListener("keyup", function(event){
+  addHabitInput.addEventListener("keyup", function(event) {
     if (event.key === "Enter") addHabit();
   });
-
-  var trackerTitleTxt = document.createTextNode(monthArray[currentMonth] + "/" + currentYear); 
-  monthYearTitle.appendChild(trackerTitleTxt); // titulo: mês/ano
-  createHeadCells();
-
-  // criando células da primeira linha
-  function createHeadCells() {
-    for (var i = 1; i <= daysInMonth; i++) {
-      var cell = document.createElement("th");
-      var cellTxt;
-      if (i > 9) 
-        cellTxt = document.createTextNode(i);
-      else 
-        cellTxt = document.createTextNode("0" + i);
-      cell.appendChild(cellTxt);
-      cell.classList = "tableRow";
-      firstLineTable.appendChild(cell);
-    }
-  }
-
-  // checando local storage
+  
   habits = getDataFromStorage();
-  console.log(habits);
-
-  // adicionando habitos na tela
-  habits.forEach(habit => {
-    var tableLine = document.createElement("tr");
-    showHabitTitle(tableLine, habit.name);
-    for (var i = 0; i < habit.days.length; i++) 
-      showHabitCheckbox(tableLine, habit.name, i+1, habit.days[i]);
-    habitBody.appendChild(tableLine);
-  });
-
-}
-
-// função para adicionar uma nova linha de checkboxes e o nome do hábito a ser rastreado
-function addHabit() {
-  var habit = {name: "", days: []};
-  habit.name = addHabitInput.value;
-  addHabitInput.value = "";
-  
-  if (habit.name == "") //não aceitar habitos sem titulos
-    return; 
-  else if (habits.length != 0)  //não aceitar habitos com titulos iguais
-    for (var i = 0; i < habits.length; i++) 
-      if (habits[i].name === habit.name) 
-        return;
-  
-  var tableLine = document.createElement("tr");
-  showHabitTitle(tableLine, habit.name);
-  for (var i = 1; i <= daysInMonth; i++) {
-    showHabitCheckbox(tableLine, habit.name, i, false);
-    habit.days.push(false);
+  if (habits !== []) {
+    numberOfWeeks = new Date(currentYear, currentMonth).getWeekOfMonth();
+    habits.forEach(habit => showHabit(habit));
   }
-  habitBody.appendChild(tableLine);
+  else 
+    showEmptyMessage();
   
-  // var id = "habit" + lastHabitIndex;
-  // line.setAttribute("id", id);
-  // lastHabitIndex++;
-  
-  habits.push(habit);
-  saveDataInStorage();
+  function showHabit(habit) {
+    var habitHead = createHabitHead(habit.name);
+    var habitBody = createHabitWeekDays();
+    habitBody.style.gridTemplateRows = numberOfWeeks+1;
+    if (firstDayOfMonth != 0) 
+      habitBody.appendChild(document.createElement("div"));
+      habitBody.querySelector(':nth-child(8)').style.gridColumn = firstDayOfMonth;
+    for (var i = 0; i < habit.days.length; i++) 
+      createHabitDay(habitBody, habit.name, i+1, habit.days[i]);
+    createHabitBox(habitHead, habitBody);
+  }
+
+  function showEmptyMessage() {
+    console.log("nao há hábitos para serem mostrados. comece agora!");
+  }
 }
 
-function showHabitTitle(line, habitTitle) {
-  var cellContent = document.createElement("span");
-  var cellTxt = document.createTextNode(habitTitle);
-  cellContent.appendChild(cellTxt);
-  var cell = document.createElement("td");
-  cell.classList = "habitTitle";
-  cell.appendChild(cellContent);
-  line.appendChild(cell);
+function createHabitHead(habitName) {
+  var habitHead = document.createElement("div");
+  var habitTitle = document.createElement("h3");
+  habitTitle.textContent = habitName;
+  var habitDelete = document.createElement("button");
+  habitDelete.textContent = "X";
+  habitDelete.addEventListener("click", function() {deleteHabit(habitName) });
+  habitHead.appendChild(habitTitle);
+  habitHead.appendChild(habitDelete);
+  habitHead.classList = "habit-head";
+  return habitHead;
 }
 
-function showHabitCheckbox(line, habitTitle, day, isDone) {
-  var cellContent = document.createElement("input");
-  cellContent.setAttribute("type", "checkbox");
-  cellContent.setAttribute("onclick", `setCheckbox("${habitTitle}", "${day}")`);
-  cellContent.classList = "habitCheckbox";
-  cellContent.checked = isDone;
-  var cell = document.createElement("td");
-  cell.appendChild(cellContent);
-  line.appendChild(cell);
+function createHabitWeekDays() {
+  var habitBody = document.createElement("div");
+  habitBody.classList = "habit-body grid my-1";
+  smallWeekDays.forEach(weekDay => {
+    habitBody.innerHTML += `<p class="bold upper">${weekDay}</p>`;
+  });
+  return habitBody;
 }
 
-function setCheckbox(habitTitle, dayNumber) {
-  console.log(habitTitle, dayNumber);
+function createHabitDay(body, habitName, day, isDone) {
+  var id = habitName + ";" + day;
+  var checkbox = document.createElement("input");
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.setAttribute("id", id);
+  checkbox.checked = isDone;
+  var label = document.createElement("label");
+  label.setAttribute("for", id);
+  label.textContent = (day < 10) ? "0" + day : day;
+  checkbox.addEventListener("change", function() {checkDay(checkbox)});
+  body.appendChild(checkbox);
+  body.appendChild(label);
+}
+
+function createHabitBox(habitHead, habitBody) {
+  var habitBox = document.createElement("div");
+  habitBox.classList = "habit-box";
+  habitBox.appendChild(habitHead);
+  habitBox.appendChild(habitBody);
+  habitsContainer.appendChild(habitBox);
+}
+
+checkDay = (checkbox) => {
+  var habit = checkbox.id.split(";");
   for (var i = 0; i < habits.length; i++)
-    if (habits[i].name == habitTitle) {
-      habits[i].days[dayNumber-1] = !(habits[i].days[dayNumber-1]);
+    if (habits[i].name == habit[0]) {
+      habits[i].days[habit[1]-1] = !(habits[i].days[habit[1]-1]);
       break;
     }
   saveDataInStorage();
+}
+
+deleteHabit = (habitName) => {
+  console.log(habitName);
+}
+
+function addHabit() {
+  // var habit = {name: "", days: []};
+  var habit = {name: addHabitInput.value, days: []};
+  // console.log(addHabitInput);
+  // habit.name = addHabitInput.value;
+  addHabitInput.value = "";
+  addHabitInput.focus();
+    
+  if (habit.name == "") // nomes vazios
+    return; 
+  else if (habits.length != 0)  // nomes iguais
+    for (var i = 0; i < habits.length; i++) 
+      if (habits[i].name === habit.name) 
+        return;
+
+  var habitHead = createHabitHead(habit.name);
+  var habitBody = createHabitWeekDays();
+  for (var i = 1; i <= daysInMonth; i++) {
+    createHabitDay(habitBody, habit.name, i, false);
+    habit.days.push(false);
+  }
+  habits.push(habit);
+  createHabitBox(habitBody, habitHead);
 }
 
 function getDataFromStorage() {
