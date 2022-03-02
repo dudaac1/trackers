@@ -1,57 +1,71 @@
 <!DOCTYPE html>
-
-  <head>
-    <meta charset="uft-8">
-    <title>★ trackers ★</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-  </head>
-
-  <body>
-    <header class="header">
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>★ trackers ★</title>
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+  
+  <header>
+    <div class="container">
       <h1>Rastreadores</h1>
-    </header>
-    <main class="main startMain">
-      <div class="startCard">
+    </div>
+  </header>
+
+  <main class="home-main">
+    <div class="container flex">
+      <div class="trackers-card m-1">
         <img src="images/image1.jpg" />
-        <article class="startContainer">
-          <h2>Hábitos</h2>
+        <div class="description flex p-1">
+          <h3>Hábitos</h3>
           <p>Para colocar tarefas a serem concluídas diariamente no mês e marcá-las. Há preservação de dados a partir do <em>local storage</em>. Transição entre meses incerta.</p>
-          <a href="/habits/habits.html"><button>Abrir</button></a>
-        </article>
+          <a href="/habits/habits.html">
+            <button>Abrir</button>
+          </a>
+        </div>
       </div>
       
-      <div class="startCard">
+      <div class="trackers-card m-1">
         <img src="images/image2.jpg" />
-        <article class="startContainer">
-          <h2>Pomodoro</h2>
+        <div class="description flex p-2">
+          <h3>Pomodoro</h3>
           <p>Para usar a técnica do <a href="https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro">pomodoro</a> com o tempo que desejar, armazenando os tempos do dia e podendo separá-los por tarefa. <br>Em desenvolvimento. </p>
-          <a href="/pomodoro/pomodoro.html"><button>Abrir</button></a>
-        </article>
+          <a href="/pomodoro/pomodoro.html">
+            <button>Abrir</button>
+          </a>
+        </div>
       </div>
       
-      <div class="startCard">
+      <div class="trackers-card m-1">
         <img src="images/image1.jpg" />
-        <article class="startContainer">
-          <h2>Visão Anual</h2>
+        <div class="description flex p-2">
+          <h3>Visão Anual</h3>
           <p>Para planejar o ano, sendo possível fazer anotações mensais e/ou diárias, possibilitando organização de aniversários e feriados. <br>Em desenvolvimento. </p>
-          <a href="/yearplan/year-plan.html"><button>Abrir</button></a>
-        </article>
+          <a href="/yearplan/year-plan.html">
+            <button>Abrir</button>
+          </a>
+        </div>
       </div>
       
-      <div class="startCard"> 
+      <div class="trackers-card m-1"> 
         <img src="images/image2.jpg" />
-        <article class="startContainer">
-          <h2>Agenda</h2>
+        <div class="description flex p-2">
+          <h3>Agenda</h3>
           <p>Agenda anual. Possibilitará o armazenamento de até quatro comprimossos por dia do ano, podendo esses serem removidos.<br>Projeto futuro.</p>
-          <a><button disabled>Abrir</button></a>
-        </article>
+          <a>
+            <button disabled>Abrir</button>
+          </a>
+        </div>
       </div>
-    </main>
 
-    <footer class="footer"></footer>
-  </body>
+    </div>
+  </main>
 
-  </html>
+  <footer></footer>
+</body>
+</html>

@@ -14,16 +14,79 @@
   --title-font: 'Rubik', sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--title-font);
+  color: var(--black);
+}
+
+body {
+  background-color: var(--white-color);
+  font-size: 16px;
+}
+
+a {
+  text-decoration: underline dotted var(--primary-color) 1px;
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--dark-color);
+}
+
+textarea, input, button {
+  font-family: var(--title-font);
+  color: var(--black-color);
+}
+
+/* HOME PAGE */
+
+.home-main .flex { flex-wrap: wrap; }
+
+.trackers-card {
+  background-color: var(--main-color-light);
+  /* flex: 1 275px; */
+  max-width: 350px;
+  height: auto;
+  max-height: 450px;
+  align-items: stretch;
+  margin: 10px 10px 50px 10px;
+  padding-bottom: 25px;
+}
+
+.trackers-card img { 
+  width: 100%; 
+  height: 200px;
+  object-fit: cover;
+}
+
+.description {
+  height: 60%;
+  padding: 0 5%;
+  font-size: 0.9rem;
+  align-self: stretch;
+}
+
+.description p { flex-grow: 1; }
+.description button { padding: 5px 20px; }
+
 /* HABIT TRACKER PAGE */
+
+.habits-header .flex { justify-content: space-between; }
+
+.habits-main .flex { 
+  width: 100%;
+  flex-wrap: wrap; 
+}
+
 .habit-box {
-  width: auto;
   padding: 1rem;
   margin: 1rem;
 }
 
-.habit-box .grid {
-  grid-template-columns: repeat(7, 1fr) ;
-}
+.habit-box .grid { grid-template-columns: repeat(7, 1fr); }
 
 .habit-head {
   display: flex;
@@ -36,7 +99,7 @@
 .habit-head h3 {
   font-weight: 300;
   font-size: 1.25rem;
-  padding: 0px 0.25rem;
+  padding: 0 0.25rem;
 }
 
 .habit-head button {
@@ -45,12 +108,12 @@
   padding: 0.5rem;
 }
 
+.habit-body { font-size: 0.8rem;}
+
 .habit-body p {
-  font-size: 12px;
   text-align: center;
   color: var(--second-black);
 }
-
 
 .habit-body input[type="checkbox"]:not(:checked),
 .habit-body input[type="checkbox"]:checked {
@@ -59,20 +122,101 @@
 }
 
 .habit-body input[type="checkbox"] + label {
-  display: inline-block;
   margin: 0.1rem;
   padding: 0.3rem;
   background-color: transparent;
   border: 1px solid var(--primary-color);
   border-radius: 100%;
   cursor: pointer;
-  font-size: 14px;
   text-align: center;
   color: black;
 }
 
 .habit-body input[type="checkbox"]:checked + label {
+  content: '\2713';
   color: var(--primary-color);
   background-color: var(--primary-color);
-  content: '\2713';
+}
+
+/* POMODORO PAGE */
+
+.timer {
+  max-width: 400px;
+  height: 350px;
+  margin-top: 50px;
+  padding: 50px; 
+  background-color: var(--light-color);
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.stats {
+  padding: 1.4rem;
+  text-align: justify;
+}
+
+.timerInput { width: 50px; }
+
+
+/* YEAR PLANNER PAGE */
+
+.year-plan-header .flex,
+.year-plan-footer .flex { justify-content: space-between; }
+
+.year-plan-main {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+
+.year-plan-main .flex {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.year-plan-main article {
+  margin: 10px 5px 5px 5px;
+  width: 140px;
+}
+
+.year-plan-main h3 {
+  background: var(--primary-color);
+  text-align: center;
+  width: 100%;
+  padding: 0px 3px;
+}
+
+.year-plan-main textarea { resize: none; }
+
+.monthBox {
+  border: 1px solid var(--primary-color);
+  border-collapse: collapse;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+}
+
+.normal { height: 100px; }
+.bigger { height: 175px; }
+
+.monthSection {
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.monthSection input {
+  margin: 2.5px 0px 0px 2.5px;
+  width: 115px;
+}
+
+
+/* RESPONSIVINESS */
+
+@media (max-width: 768px) {
+  .habits-header .flex { 
+    flex-direction: column; 
+    text-align: center;
+  }
 }

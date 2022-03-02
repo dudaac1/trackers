@@ -1,33 +1,15 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: var(--title-font);
-  color: var(--black);
-}
-
-body {
-  background-color: var(--white-color);
-  font-size: 16px;
-}
-
 .container {
   max-width: 1500px;
   margin: 0 auto;
   overflow: auto;
-  padding: 0 20px;
+  padding: 0 1.4rem;
 }
 
 .flex {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.wrap {
-  flex-wrap: wrap;
 }
 
 .grid {
@@ -43,25 +25,13 @@ body {
   height: 0;
 }
 
-a {
-  text-decoration: underline dotted var(--primary-color) 1px;
-  color: var(--primary-color);
-}
 
-a:hover {
-  color: var(--dark-color);
-}
-
-textarea, input, button {
-  font-family: var(--title-font);
-  color: var(--black-color);
-}
-
+/* BUTTONS */
 button {
   background-color: transparent;
   border: none;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 0.7rem 1.4rem;
   cursor: pointer;
 }
 
@@ -74,11 +44,7 @@ button {
 /* HEADER */
 header {
   background-color: var(--primary-color); 
-  padding: 15px;
- }
-
- header .flex {
-   justify-content: space-between;
+  padding: 1rem;
  }
 
  header h1, 
@@ -88,25 +54,25 @@ header {
  }
  
  /* FOOTER */
- .footer {
+ footer {
   bottom: 0;
   position: fixed;
   width: 100%;
   background-color: var(--primary-color);
   padding: 25px 2.5vw;
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--second-black);
 }
 
-.footer small {
-  font-size: 12px;
+footer small {
+  font-size: 0.8rem;
 }
 
-.footer a {
+footer a {
   color: var(--light-color);
 }
 
-.footer input {
+footer input {
   border-color: var(--dark-color);
 
   background-color: transparent;
@@ -115,19 +81,18 @@ header {
   border-bottom: 1px solid var(--dark-color);
 }
 
+
 /* TEXT */
-.sm {
-  font-size: 14px;
-}
+.sm { font-size: 0.9rem; }
+.md { font-size: 2rem; }
+.lg { font-size: 3rem; }
+.xl { font-size: 5rem; }
 
-.bold {
-  font-weight: bold;
-}
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
 
-.upper {
-  text-transform: uppercase;
-}
-
+.upper { text-transform: uppercase; }
+.lower { text-transform: lowercase; }
 
 
 /* MARGIN */
@@ -153,15 +118,13 @@ header {
 .p-4 { padding: 2rem; }
 
 
+
+/* TABLETS AND UNDER */
+@media (max-width: 768px) {
+
+}
+
+/* MOBILE */
 @media (max-width: 500px) {
-  body {font-size: 36px;}
-  .flex { flex-direction: column-reverse; }
-}
-
-@media (max-width: 786px) {
-  body {font-size: 24px;}
-}
-
-@media (max-width: 1366px) {
-  body {font-size: 20px;}
+  
 }

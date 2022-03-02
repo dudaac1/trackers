@@ -44,7 +44,6 @@ function showMonths() {
   
   var monthArticles = document.getElementsByName("monthArticle");
   monthArticles.forEach(article => {
-    // console.log(article.children);
     article.style.width = "200px";
     article.children[1].classList = "monthBox normal";
     article.children[2].classList = "monthSection";

@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-  <head>
-    <meta charset="uft-8">
-    <title>★ habit tracker ★</title>
-    <link rel="stylesheet" href="/css/utilities.css">
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>★ habit tracker ★</title>
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
 
-  <body>
-    <header>
-      <div class="container flex">
-        <h1>Rastreador de Hábitos</h1>
-        <h2 id="monthTitle"></h2> 
-      </div>
-    </header>
+   <header class="habits-header">
+    <div class="container flex">
+      <h1>Rastreador de Hábitos</h1>
+      <h2 id="monthTitle"></h2> 
+    </div>
+  </header>
 
-    <main>
-      <div class="div container flex wrap" id="habits"></div>
-    </main>
-
-  <footer class="footer">
-    <input type="text" id="addHabitInput" placeholder="título do hábito" size="40" value="">
-    <button id="addHabitBtn" onclick="addHabit()" class="addHabitBtn">+</button>
-    <br><small>(Não é aceito títulos vazios ou repetidos.)</small>
+  <main class="habits-main">
+    <div class="container flex" id="habits"></div>
+  </main>
+  
+  <footer class="habits-footer">
+    <div class="container">
+      <input type="text" id="addHabitInput" placeholder="título do hábito" size="40" value="">
+      <button id="addHabitBtn" onclick="addHabit()" class="addHabitBtn">+</button>
+      <br><small>(Não é aceito títulos vazios ou repetidos.)</small>
+    </div>
   </footer>
 
-    <script src="script.js"></script>
-  </body>
-
+  <script src="script.js"></script>
+</body>
 </html>

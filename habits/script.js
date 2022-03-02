@@ -16,18 +16,24 @@ Date.prototype.getWeekOfMonth = function () {
 var habitsContainer, addHabitInput, monthTitle;
 var habits = [];
 
+// it gets elements from DOM, update month/year title, adds focus and event listener on input
+// get data from storage and show habits in screen
 function start() {
+  // getting elements from DOM
   habitsContainer = document.getElementById("habits");
   addHabitInput = document.getElementById("addHabitInput");
   monthTitle = document.getElementById("monthTitle");
 
+  // updating month/year title
   monthTitle.textContent = monthArray[currentMonth] + "/" + currentYear;
 
+  // input events
   addHabitInput.focus();
   addHabitInput.addEventListener("keyup", function(event) {
     if (event.key === "Enter") addHabit();
   });
   
+  // getting data from storage and showing in screen if existent
   habits = getDataFromStorage();
   if (habits !== []) {
     numberOfWeeks = new Date(currentYear, currentMonth).getWeekOfMonth();
@@ -36,6 +42,7 @@ function start() {
   else 
     showEmptyMessage();
   
+  // for each habit returned, creates habit header, habit body and a container for them
   function showHabit(habit) {
     var habitHead = createHabitHead(habit.name);
     var habitBody = createHabitWeekDays();
@@ -48,11 +55,17 @@ function start() {
     createHabitBox(habitHead, habitBody);
   }
 
+  // if there's nothing in local storage, it shows a message in screen
   function showEmptyMessage() {
-    console.log("nao há hábitos para serem mostrados. comece agora!");
+    // console.log("nao há hábitos para serem mostrados. comece agora!");
+    var message = document.createElement("h2");
+    message.textContent = "nao há hábitos para serem mostrados. comece agora!";
+    habitsContainer.appendChild(message);
   }
 }
 
+// creates a div element with habit's name and a delete button
+// returns the first created div
 function createHabitHead(habitName) {
   var habitHead = document.createElement("div");
   var habitTitle = document.createElement("h3");
@@ -66,6 +79,8 @@ function createHabitHead(habitName) {
   return habitHead;
 }
 
+// creates a div element with 7 p elements for every day of week
+// returns the first created div
 function createHabitWeekDays() {
   var habitBody = document.createElement("div");
   habitBody.classList = "habit-body grid my-1";
@@ -75,6 +90,8 @@ function createHabitWeekDays() {
   return habitBody;
 }
 
+// creates a label and a checkbox input for the day
+// it is required an outside loop (as done in addHabit and showHabit)
 function createHabitDay(body, habitName, day, isDone) {
   var id = habitName + ";" + day;
   var checkbox = document.createElement("input");
@@ -89,6 +106,8 @@ function createHabitDay(body, habitName, day, isDone) {
   body.appendChild(label);
 }
 
+// creates a div with a header and a body for a habit
+// it must be done with the returns from createHabitHead and createHabitWeekDays
 function createHabitBox(habitHead, habitBody) {
   var habitBox = document.createElement("div");
   habitBox.classList = "habit-box";
@@ -97,31 +116,36 @@ function createHabitBox(habitHead, habitBody) {
   habitsContainer.appendChild(habitBox);
 }
 
+// called when day in habit is clicked
+// changes the value of that day to !day and saves in localStorage
 checkDay = (checkbox) => {
-  var habit = checkbox.id.split(";");
+  var id = checkbox.id.split(";"); // [0] = name; [1] = day
   for (var i = 0; i < habits.length; i++)
-    if (habits[i].name == habit[0]) {
-      habits[i].days[habit[1]-1] = !(habits[i].days[habit[1]-1]);
+    if (habits[i].name == id[0]) {
+      habits[i].days[id[1]-1] = !(habits[i].days[id[1]-1]);
       break;
     }
   saveDataInStorage();
 }
 
+// called when delete button on habit box is clicked
+// it deletes the habit from habits array and localstorage
 deleteHabit = (habitName) => {
   console.log(habitName);
 }
 
+// called when plus button on footer clicked or enter key pressed
+// it adds the new habit in screen and in localstorage
 function addHabit() {
   // var habit = {name: "", days: []};
   var habit = {name: addHabitInput.value, days: []};
-  // console.log(addHabitInput);
-  // habit.name = addHabitInput.value;
   addHabitInput.value = "";
   addHabitInput.focus();
-    
-  if (habit.name == "") // nomes vazios
+  
+  // doesn't accept:
+  if (habit.name == "") // empty habits names
     return; 
-  else if (habits.length != 0)  // nomes iguais
+  else if (habits.length != 0)  // equals habits names
     for (var i = 0; i < habits.length; i++) 
       if (habits[i].name === habit.name) 
         return;
@@ -132,10 +156,12 @@ function addHabit() {
     createHabitDay(habitBody, habit.name, i, false);
     habit.days.push(false);
   }
-  habits.push(habit);
   createHabitBox(habitBody, habitHead);
+  habits.push(habit);
+  saveDataInStorage();
 }
 
+// getting and saving data from/in storage
 function getDataFromStorage() {
   return JSON.parse(localStorage.getItem("habits")) || [];
 }

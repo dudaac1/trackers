@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-  <head>
-    <meta charset="uft-8">
-    <title>★ pomo tracker ★</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../style.css" />
-  </head>
-  <body>
-    <header class="header">
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>★ pomo tracker ★</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+</head>
+<body>
+  
+  <header>
+    <div class="container">
       <h1>Pomodoro</h1>
-    </header>
+    </div>
+  </header>
 
-    <main class="main">
+  <main>
+    <div class="container flex">
       <div class="timer">
-        <h2><span id="activityTxt"></span></h2>
-        <h1><span id="minutesTxt"></span>:<span id="secondsTxt"></span></h1>
+        <h2 class="md"><span id="activityTxt"></span></h2>
+        <h1 class="xl"><span id="minutesTxt"></span>:<span id="secondsTxt"></span></h1>
         <button id="timerBtn"></button>
       </div>
-
+  
       <div class="hidden" id="stats"></div>
-    </main>
+    </div>
+  </main>
 
-    <footer class="footer flex">
+  <footer>
+    <div class="container flex">
       <div>
         Tempos (min) — 
         Pomodoro: <input type="number" max="999" id="pomodoroSize" class="timerInput"> — 
@@ -32,8 +39,9 @@
         <small>Está é uma cópia simplificada de <a href="https://pomofocus.io/">Pomofocus</a>.</small>
       </div>
         <button class="statsBtn" onclick="showStats()" id="statsBtn">Mostrar<br>estatísticas</button>
-    </footer>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
