@@ -27,6 +27,8 @@ body {
   font-size: 16px;
 }
 
+main { padding-bottom: 5rem; }
+
 a {
   text-decoration: underline dotted var(--primary-color) 1px;
   color: var(--primary-color);
@@ -45,9 +47,14 @@ textarea, input, button {
 
 .home-main .flex { flex-wrap: wrap; }
 
+.home-main button:disabled { 
+  color: var(--light-color); 
+  cursor: default;
+  border: 0;
+}
+
 .trackers-card {
   background-color: var(--main-color-light);
-  /* flex: 1 275px; */
   max-width: 350px;
   height: auto;
   max-height: 450px;
@@ -82,6 +89,7 @@ textarea, input, button {
 }
 
 .habit-box {
+  max-width: 250px;
   padding: 1rem;
   margin: 1rem;
 }
@@ -104,16 +112,11 @@ textarea, input, button {
 
 .habit-head button {
   color: var(--primary-color);
-  margin: 0.5rem;
   padding: 0.5rem;
 }
 
-.habit-body { font-size: 0.8rem;}
-
-.habit-body p {
-  text-align: center;
-  color: var(--second-black);
-}
+.habit-body { font-size: 0.8rem; }
+.habit-body p { text-align: center; }
 
 .habit-body input[type="checkbox"]:not(:checked),
 .habit-body input[type="checkbox"]:checked {
@@ -125,7 +128,7 @@ textarea, input, button {
   margin: 0.1rem;
   padding: 0.3rem;
   background-color: transparent;
-  border: 1px solid var(--primary-color);
+  border: 1.5px solid var(--primary-color);
   border-radius: 100%;
   cursor: pointer;
   text-align: center;
@@ -133,90 +136,155 @@ textarea, input, button {
 }
 
 .habit-body input[type="checkbox"]:checked + label {
-  content: '\2713';
+  content: '';
   color: var(--primary-color);
   background-color: var(--primary-color);
 }
 
+.habit-body input[type="checkbox"]:disabled + label {
+   border-color: transparent;
+   color: var(--dark-color);
+   cursor: not-allowed;
+  }
+
+  
 /* POMODORO PAGE */
 
-.timer {
-  max-width: 400px;
-  height: 350px;
-  margin-top: 50px;
-  padding: 50px; 
+.pomodoro-main { height: 92vh; }
+.pomodoro-main .container { overflow-x: hidden; }
+.pomodoro-main .flex { gap: 1rem; }
+.pomodoro-main .flex * { flex-direction: column; }
+.pomodoro-main button:hover { color: var(--primary-color); }
+.pomodoro-main h2 { text-align: center; }
+
+.timer { padding: 4rem; }
+
+.timer p { 
+  display: block; 
+  font-weight: bold;
+}
+
+.timer, .pomodoro-stats {
   background-color: var(--light-color);
-  align-items: center;
-  justify-content: space-evenly;
+  min-width: 30rem;
 }
 
-.stats {
-  padding: 1.4rem;
-  text-align: justify;
+.pomodoro-stats { padding: 2rem; }
+.pomodoro-stats div { margin: 0; padding: 0;}
+
+.pomodoro-stats input {
+  background-color: transparent;
+  padding: 0.1rem;
+  margin: 0.2rem 0.5rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-.timerInput { width: 50px; }
+.pomodoro-stats input:focus { background-color: var(--white-color); }
 
+.pomodoro-footer .grid { 
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+}
+
+.pomodoro-footer button:hover { color: var(--light-color); }
+.pomodoro-footer .grid * { order: 0; }
 
 /* YEAR PLANNER PAGE */
 
-.year-plan-header .flex,
-.year-plan-footer .flex { justify-content: space-between; }
+.yearplan-header .flex,
+.yearplan-footer .flex { justify-content: space-between; }
 
-.year-plan-main {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 100px;
-}
+.yearplan-main { margin-bottom: 100px; }
+.yearplan-main .container { overflow: hidden; }
 
-.year-plan-main .flex {
+.yearplan-main .flex { 
   align-items: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
 }
 
-.year-plan-main article {
-  margin: 10px 5px 5px 5px;
-  width: 140px;
+.yearplan-main section {
+  margin: 0.5rem;
+  width: 200px;
 }
 
-.year-plan-main h3 {
-  background: var(--primary-color);
-  text-align: center;
+.yearplan-main h3 {
   width: 100%;
-  padding: 0px 3px;
+  background-color: var(--primary-color);
+  padding: 0px 0.5rem;
+  text-align: center;
 }
 
-.year-plan-main textarea { resize: none; }
+.yearplan-main textarea { resize: none; }
 
-.monthBox {
+.month-textarea {
   border: 1px solid var(--primary-color);
   border-collapse: collapse;
   background-color: transparent;
   outline: none;
   width: 100%;
+  padding: 0.1rem;
 }
 
 .normal { height: 100px; }
 .bigger { height: 175px; }
 
-.monthSection {
-  flex-direction: column;
-  font-size: 12px;
+.month-days { 
+  font-size: 0.75rem; 
+}
+.month-days div { 
+  justify-content: space-around;
+  margin: 0.25rem; }
+
+.month-days input {
+  width: 85%;
+  border: 0px;
+  border-bottom: 1px solid var(--light-color);
+  outline: none;
+  background-color: transparent;
+  padding: 0.1rem;
 }
 
-.monthSection input {
-  margin: 2.5px 0px 0px 2.5px;
-  width: 115px;
-}
-
+.month-days input:focus { background-color: var(--light-color); }
+.yearplan-footer .grid button { justify-self: end; }
 
 /* RESPONSIVINESS */
+@media (max-width: 1100px) {
+  .pomodoro-main .flex { 
+    flex-direction: column;
+    max-width: 30rem;
+  }
+
+  .timer, .pomodoro-stats { min-height: 50vh; }
+}
+
 
 @media (max-width: 768px) {
-  .habits-header .flex { 
+  .habits-header .flex,
+  .pomodoro-main .flex,
+  .yearplan-header .flex,
+  .yearplan-footer .flex { 
     flex-direction: column; 
     text-align: center;
   }
+
+  .pomodoro-main .grid { grid-template-columns: 1fr;   }
+  .pomodoro-footer .grid :nth-child(2) { order: 3; }
+  .pomodoro-footer .grid :nth-child(3) { order: 2; }
+
+  .pomodoro-footer .grid,
+  .yearplan-footer .grid { grid-template-columns: 1fr; }
+
+  .pomodoro-footer *,
+  .pomodoro-footer button,
+  .yearplan-footer .grid *, 
+  .yearplan-footer .grid button { 
+    justify-self: center;
+    padding: 0;
+    margin: 0.5rem;
+  }
+
 }

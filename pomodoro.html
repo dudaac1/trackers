@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>★ pomo tracker ★</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+</head>
+<body>
+  
+  <header>
+    <div class="container">
+      <a href="index.html" title="Voltar a Página Inicial">
+        <h1>Pomodoro</h1>
+      </a>
+    </div>
+  </header>
+
+  <main class="pomodoro-main">
+    <div class="container flex" id="pomodoro">
+      <div class="timer flex">
+          <p class="md"><span id="activitySpan"></span></p>
+          <p class="xl">
+            <span id="minutesSpan"></span>:<span id="secondsSpan"></span>
+          </p>
+          <button id="timerBtn"></button>
+      </div>
+      <div class="hidden" id="statsContainer"></div>
+    </div>
+  </main>
+
+  <footer class="pomodoro-footer">
+    <div class="container grid">
+        <button id="changeTimesBtn">modificar tempos</button>
+        <small>Está é uma cópia simplificada de <a href="https://pomofocus.io/">Pomofocus</a>.</small>
+        <button id="statsBtn">mostrar estatísticas</button>
+    </div>
+  </footer>
+
+  <script src="js/pomodoro.js"></script>
+</body>
+</html>

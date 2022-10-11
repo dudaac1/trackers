@@ -2,7 +2,7 @@
   max-width: 1500px;
   margin: 0 auto;
   overflow: auto;
-  padding: 0 1.4rem;
+  padding: 0 1.5rem;
 }
 
 .flex {
@@ -23,6 +23,7 @@
 .hidden {
   visibility: hidden;
   height: 0;
+  width: 0;
 }
 
 
@@ -38,6 +39,10 @@ button {
 .btn-primary {
   background-color: var(--primary-color);
   color: var(--white-color)
+}
+
+.btn-outline {
+  border: 1px var(--primary-color) solid;
 }
 
 
@@ -74,7 +79,6 @@ footer a {
 
 footer input {
   border-color: var(--dark-color);
-
   background-color: transparent;
   outline: none;
   border: none;
@@ -90,13 +94,15 @@ footer input {
 
 .bold { font-weight: bold; }
 .italic { font-style: italic; }
+.underl { text-decoration: underline; }
+
+.justify { text-align: justify; }
 
 .upper { text-transform: uppercase; }
 .lower { text-transform: lowercase; }
 
-
 /* MARGIN */
-.my-1 { margin: 0.5rem 0 ; }
+.my-1 { margin: 0.5rem 0; }
 .my-2 { margin: 1rem 0; }
 .my-3 { margin: 1.5rem 0; }
 .my-4 { margin: 2rem 0; }
@@ -107,7 +113,7 @@ footer input {
 .m-4 { margin: 2rem; }
 
 /* PADDING */
-.py-1 { padding: 0.5rem 0 ; }
+.py-1 { padding: 0.5rem 0; }
 .py-2 { padding: 1rem 0; }
 .py-3 { padding: 1.5rem 0; }
 .py-4 { padding: 2rem 0; }
@@ -116,6 +122,13 @@ footer input {
 .p-2 { padding: 1rem; }
 .p-3 { padding: 1.5rem; }
 .p-4 { padding: 2rem; }
+
+/* EFFECTS */
+
+.scale1-1:hover{
+  transform: scale(1.1);
+}
+
 
 
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>★ year plan ★</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+</head>
+<body>
+  <header class="yearplan-header">
+    <div class="container flex">
+      <a href="index.html" title="Voltar a Página Inicial">
+        <h1>Planejamento Anual</h1>
+      </a>
+      <h2 id="yearTitle"></h2> 
+    </div>
+  </header>
+  
+  <main class="yearplan-main">
+    <div class="container flex" id="yearplan"></div>
+  </main>
+  
+  <footer class="yearplan-footer">
+    <div class="container grid">
+      <div>
+        Selecione ano: <input type="number" style="width: 50px" id="year" value="2021">
+        <button onclick="saveYear()">salvar</button>
+      </div>
+      <button id="hideDays" onclick="hideDays()">esconder dias</button>
+      <small>(Clique em qualquer lugar da tela para salvar o texto inserido).</small>
+    </div>
+  </footer>
+  
+  <script src="js/yearplan.js"></script>
+</body>
+</html>

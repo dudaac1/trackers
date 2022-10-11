@@ -12,23 +12,25 @@
 
    <header class="habits-header">
     <div class="container flex">
-      <h1>Rastreador de Hábitos</h1>
+      <a href="index.html" title="Voltar a Página Inicial">
+        <h1>Rastreador de Hábitos</h1>
+      </a>
       <h2 id="monthTitle"></h2> 
     </div>
   </header>
 
   <main class="habits-main">
-    <div class="container flex" id="habits"></div>
+    <div class="container flex" id="habitsContainer"></div>
   </main>
   
-  <footer class="habits-footer">
+  <footer>
     <div class="container">
       <input type="text" id="addHabitInput" placeholder="título do hábito" size="40" value="">
       <button id="addHabitBtn" onclick="addHabit()" class="addHabitBtn">+</button>
-      <br><small>(Não é aceito títulos vazios ou repetidos.)</small>
+      <br><small>(Não são aceitos títulos vazios ou repetidos).</small>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/habits.js"></script>
 </body>
 </html>
